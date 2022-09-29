@@ -12,12 +12,20 @@ import {
 	faInstagram,
 	faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
+import { useDispatch } from "react-redux";
+import { CLOSE } from "../redux/menu";
 
 const ContactForm = ({ width, show }) => {
 	const [sent, setSent] = useState(false);
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [message, setMessage] = useState("");
+	const dispatch = useDispatch();
+	React.useEffect(() => {
+		dispatch({
+			type: CLOSE,
+		});
+	}, []);
 	return (sent == false) & (show == true) ? (
 		<Flex
 			as='form'
@@ -39,6 +47,7 @@ const ContactForm = ({ width, show }) => {
 					type='text'
 					fontFamily='nun'
 					placeholder='your name'
+					required
 					onChange={(e) => {
 						setName(e.target.value);
 					}}
@@ -50,6 +59,7 @@ const ContactForm = ({ width, show }) => {
 					type='email'
 					fontFamily='nun'
 					placeholder='email'
+					required
 					onChange={(e) => {
 						setEmail(e.target.value);
 					}}
@@ -60,6 +70,7 @@ const ContactForm = ({ width, show }) => {
 					name='message'
 					fontFamily='nun'
 					width={1}
+					required
 					onChange={(e) => {
 						setMessage(e.target.value);
 					}}

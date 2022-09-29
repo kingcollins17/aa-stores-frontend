@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"start": "webpack --mode development --watch ./src/index.js --output-path ./public/js",
-		"prod": "webpack --mode production --devtool eval  --watch ./src/index.js --output-path ./public/js --output-filename index.bundle.js"
+		"prod": "webpack --mode production --devtool eval ./src/index.js --output-path ./public/js --output-filename index.bundle.js"
 	},
 	"author": "@collins",
 	"license": "ISC",

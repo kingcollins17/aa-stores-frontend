@@ -9,6 +9,7 @@ import { Navigate } from "react-router-dom";
 import { WrapLoader } from "./Blog";
 import Loader from "react-spinners/DotLoader";
 import Private from "./PrivateRoute";
+import { CLOSE } from "../redux/menu";
 
 const FormShow = ({ type, username, password, email, submit, ...rest }) => {
 	return (
@@ -113,6 +114,9 @@ const Login = () => {
 	};
 	React.useEffect(() => {
 		document.title = "Login";
+		dispatch({
+			type: CLOSE,
+		});
 	}, []);
 
 	return isAuthenticated == true ? (

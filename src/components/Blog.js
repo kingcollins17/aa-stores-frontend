@@ -8,6 +8,7 @@ import { fetchBlogs, deleteBlog } from "../redux/actions";
 import "../stylesheets/blog.scss";
 import Loader from "react-spinners/DotLoader";
 import SearchBar from "../utils/SearchBar";
+import { CLOSE } from "../redux/menu";
 
 export const WrapLoader = (props) => {
 	return <Box className='loader'>{props.children}</Box>;
@@ -97,8 +98,12 @@ const Blog = () => {
 
 	let count = 0.2;
 	React.useEffect(() => {
-		document.title = "products";
+		if (searched == true) setSearched(false);
+		document.title = "updates";
 		dispatch(fetchBlogs());
+		dispatch({
+			type: CLOSE,
+		});
 	}, []);
 	return (
 		<Box className='blog-list' width='100%' my={5}>
@@ -118,32 +123,52 @@ const Blog = () => {
 						</Text>
 					</Text>
 				)}
-				<SearchBar
-					my={3}
-					toggle={() => {
-						setSearched(true);
-					}}
-				/>
+				{blogs && blogs.length > 0 ? (
+					<SearchBar
+						my={3}
+						toggle={() => {
+							setSearched(true);
+						}}
+					/>
+				) : null}
 				<Box width='100%' className='list'>
-					{searchResult && searched == true ? (
-						searchResult.map((blog) => (
-							<BlogCard
-								src={blog.image ? blog.image : null}
-								duration={blogs.length < 20 ? (count += 0.2) : (count += 0.05)}
-								component={
-									<BlogDetail
-										name={blog.name}
-										details={blog.details}
-										date={blog.date}
-										link={blog.link}
-									/>
-								}
-								key={blog.id}
-							/>
-						))
-					) : false ? (
-						<Heading fontFamily='rubik' fontSize={3} fontWeight={2} fontStyle='italic'>
-							No items matched your search
+					{searchResult && searched == true
+						? searchResult.map((blog) => (
+								<BlogCard
+									src={blog.image ? blog.image : null}
+									duration={blogs.length < 20 ? (count += 0.2) : (count += 0.05)}
+									component={
+										<BlogDetail
+											name={blog.name}
+											details={blog.details}
+											date={blog.date}
+											link={blog.link}
+										/>
+									}
+									key={blog.id}
+								/>
+						  ))
+						: null}
+					{searchResult && !searchResult.length > 0 && searched == true ? (
+						<Heading
+							fontFamily='rubik'
+							fontSize={2}
+							fontWeight={2}
+							fontStyle='italic'
+							color='#000a'
+						>
+							No items matched your search.
+						</Heading>
+					) : null}
+					{blogs && !blogs.length > 0 ? (
+						<Heading
+							fontFamily='rubik'
+							fontSize={2}
+							fontWeight={2}
+							fontStyle='italic'
+							color='#000a'
+						>
+							Sorry, there are no updates at the moment.
 						</Heading>
 					) : null}
 					{blogs && !searchResult
@@ -165,16 +190,17 @@ const Blog = () => {
 									/>
 								))
 						: null}
-					{blogs && !searchResult ? (
+					{blogs && !searchResult && blogs.length > 0 ? (
 						<ExButton
 							onClick={() => {
 								let len = blogs.length;
 								if (no < len) setNo(no + 1);
 								else setNo(1);
+								console.log(blogs);
 							}}
 							variant='primary'
 							width={"auto"}
-							fontSize={"0.9em"}
+							fontSize={1}
 							color='#fff'
 							sx={{
 								transition: "all 0.4s",

@@ -10,6 +10,7 @@ import { WrapLoader } from "./Blog";
 import Loader from "react-spinners/DotLoader";
 import Private from "./PrivateRoute";
 import { authFetchBlogs } from "../redux/actions";
+import { CLOSE } from "../redux/menu";
 
 const Admin = () => {
 	const [createForm, setCreateForm] = useState(false);
@@ -17,7 +18,11 @@ const Admin = () => {
 	const dispatch = useDispatch();
 	let count = 0.2;
 	React.useEffect(() => {
+		document.title = "admin-panel";
 		dispatch(authFetchBlogs());
+		dispatch({
+			type: CLOSE,
+		});
 	}, []);
 
 	return (

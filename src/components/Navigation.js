@@ -6,7 +6,8 @@ import { faNavicon } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import Mobile from "../utils/Mobile";
 import { Container, Exlink, Wrap } from "../extends";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { CLOSE, OPEN } from "../redux/menu";
 
 const Icon = ({ onClick }) => {
 	return (
@@ -36,14 +37,15 @@ const Bar = () => {
 		>
 			<Exlink to='/'>Home</Exlink>
 			<Exlink to='/auth/admin'>Admin</Exlink>
-			<Exlink to='/blogs'>Blog</Exlink>
+			<Exlink to='/blogs'>Updates</Exlink>
 			<Exlink to='/contact'>Contact</Exlink>
 			{isAuthenticated == true ? <Exlink to='/auth/logout'>Log Out</Exlink> : null}
 		</Wrap>
 	);
 };
 const Navigation = () => {
-	const [menu, setMenu] = useState(false);
+	const { menu } = useSelector((state) => state.menu);
+	const dispatch = useDispatch();
 	return (
 		<Container sx={{ height: "5em", animation: "slideInDown 0.3s linear" }} className='nav'>
 			<Wrap sx={{ width: "95%" }} className='wrap'>
@@ -64,12 +66,17 @@ const Navigation = () => {
 				<Icon
 					onClick={(e) => {
 						if (menu == false) {
-							setMenu(true);
-						} else setMenu(false);
+							dispatch({
+								type: OPEN,
+							});
+						} else
+							dispatch({
+								type: CLOSE,
+							});
 					}}
 				/>
 			</Wrap>
-			<Mobile show={menu} />
+			<Mobile />
 		</Container>
 	);
 };

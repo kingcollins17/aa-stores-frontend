@@ -12,6 +12,8 @@ import {
 	faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { CLOSE } from "../redux/menu";
 // import { withData } from '../utils/contexts';
 /**
  * landing page display
@@ -20,8 +22,12 @@ import { useEffect } from "react";
  */
 const Landing = () => {
 	const { buttons } = useTheme();
+	const dispatch = useDispatch();
 	useEffect(() => {
 		document.title = "Welcome";
+		dispatch({
+			type: CLOSE,
+		});
 	}, []);
 	return (
 		<Container className='landing'>
