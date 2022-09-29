@@ -11,7 +11,7 @@ import {
 import { REFRESH, AUTH_FETCH, CREATE, DELETE_BLOG, ERROR, LOADING } from "./blogAdmin";
 import { GETTING, GET_SUCCESS, GET_FAILED } from "./blogReducers";
 
-const DOMAIN = "http://127.0.0.1:8000";
+const DOMAIN = "http://aa-stores.herokuapp.com";
 // ------------------------------------
 export const fetchBlogs = () => (dispatch) => {
 	// dispatch the action of fetching users.
