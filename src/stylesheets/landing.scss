@@ -1,5 +1,5 @@
 @import "./colors";
-$host: "http://localhost/images/";
+$host: "https://aa-stores.web.app/images/";
 @mixin bground {
 	.landing {
 		background: linear-gradient(60deg, #0003, #000a), url($host + "logo.jpg");
