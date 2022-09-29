@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Box, Button, Heading, Link, Text } from "rebass";
-import { BlogCard, Wrap } from "../extends";
+import { BlogCard, ExButton, Wrap } from "../extends";
 import { fetchBlogs, deleteBlog } from "../redux/actions";
 import "../stylesheets/blog.scss";
 import Loader from "react-spinners/DotLoader";
@@ -70,13 +70,14 @@ export const BlogDetail = ({ id, name, details, date, link, auth }) => {
 						}}
 						py='0.3em'
 						px='2em'
+						fontFamily='nun'
 						color='#f62b45'
 						onClick={() => {
 							console.log("DELETED");
 							dispatch(deleteBlog(id));
 						}}
 					>
-						Delete
+						delete
 					</Button>
 				) : null}
 			</Box>
@@ -87,6 +88,7 @@ const Blog = () => {
 	const dispatch = useDispatch();
 	// useEffect dependent on the blog state
 	const { blogs, loading, error, searchResult } = useSelector((state) => state.blog);
+	const [no, setNo] = useState(2);
 	/**
 	 *
 	 */
@@ -112,7 +114,7 @@ const Blog = () => {
 					<Text fontFamily='heebo' fontSize={[4, 5]} mb={3}>
 						Latest{" "}
 						<Text as='p' display='inline' color='#f63750'>
-							Products
+							Updates
 						</Text>
 					</Text>
 				)}
@@ -146,7 +148,7 @@ const Blog = () => {
 					) : null}
 					{blogs && !searchResult
 						? blogs
-								.slice(0, 3)
+								.slice(0, no)
 								.map((blog) => (
 									<BlogCard
 										src={blog.image ? blog.image : null}
@@ -163,6 +165,28 @@ const Blog = () => {
 									/>
 								))
 						: null}
+					{blogs && !searchResult ? (
+						<ExButton
+							onClick={() => {
+								let len = blogs.length;
+								if (no < len) setNo(no + 1);
+								else setNo(1);
+							}}
+							variant='primary'
+							width={"auto"}
+							fontSize={"0.9em"}
+							color='#fff'
+							sx={{
+								transition: "all 0.4s",
+								"&:hover": {
+									bg: "#f5f5f5",
+									color: "#f62b45",
+								},
+							}}
+						>
+							{no < blogs.length ? "View more" : "see less"}
+						</ExButton>
+					) : null}
 				</Box>
 			</Wrap>
 			<WrapLoader>

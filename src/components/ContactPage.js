@@ -84,28 +84,28 @@ const GetInTouch = ({ width }) => {
 	return (
 		<Box width={width} className='connect'>
 			<Box margin='auto' width='85%' className='wrap'>
-				<Heading fontFamily='nun' fontSize='1.6em'>
+				<Heading fontFamily='nun' fontSize='1.5em'>
 					Get in touch
 				</Heading>
 				<Box>
 					<FontAwesomeIcon icon={faPhone} />
 					<Box className='icon-desc'>
 						<Text as='p'>Phone</Text>
-						<Text as='p'>+234-7068151311</Text>
+						<Text as='p'>+234-8037485529</Text>
 					</Box>
 				</Box>
 				<Box>
 					<FontAwesomeIcon icon={faAddressCard} />
 					<Box className='icon-desc'>
 						<Text as='p'>Address</Text>
-						<Text as='p'>1234 Fake Street Nowhere</Text>
+						<Text as='p'>Enugu, Nigeria</Text>
 					</Box>
 				</Box>
 				<Box>
 					<FontAwesomeIcon icon={faMessage} />
 					<Box className='icon-desc'>
 						<Text as='p'>Email</Text>
-						<Text as='p'>fake124@gmail.com</Text>
+						<Text as='p'>aasokamchiani@gmail.com</Text>
 					</Box>
 				</Box>
 				<Box

@@ -37,10 +37,12 @@
 					color: #000a;
 					svg {
 						width: auto;
+						font-size: 0.8rem;
 					}
 					.icon-desc {
 						display: flex;
 						flex-direction: column;
+						font-size: 0.9rem;
 						gap: 0;
 						p:last-child {
 							font-family: nun;

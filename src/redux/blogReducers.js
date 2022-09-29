@@ -19,7 +19,7 @@ export const blogReducer = (state = initialBlogState, action) => {
 				searchResult:
 					action.payload != ""
 						? state.blogs.filter((blog) =>
-								blog.name.toLowerCase().includes(action.payload.toLowerCase().slice(0, 2))
+								blog.name.toLowerCase().includes(action.payload.toLowerCase().slice(0, 3))
 						  )
 						: null,
 			};

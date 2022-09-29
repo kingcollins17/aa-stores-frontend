@@ -7,7 +7,7 @@ import { login, logOut } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { WrapLoader } from "./Blog";
-import Loader from "react-spinners/CircleLoader";
+import Loader from "react-spinners/DotLoader";
 import Private from "./PrivateRoute";
 
 const FormShow = ({ type, username, password, email, submit, ...rest }) => {
@@ -70,7 +70,7 @@ const LogOutAll = () => {
 		<Navigate to='/' />
 	) : (
 		<WrapLoader>
-			<Loader loading={true} size={25} />
+			<Loader loading={true} size={35} color='#f62b45' />
 		</WrapLoader>
 	);
 };
@@ -96,7 +96,7 @@ export const SignUp = () => {
 };
 
 const Login = () => {
-	const { isAuthenticated, ...rest } = useSelector((state) => state.auth);
+	const { isAuthenticated, loading, ...rest } = useSelector((state) => state.auth);
 	const dispatch = useDispatch();
 	const [username, setUser] = useState();
 	const [password, setPass] = useState();
@@ -117,7 +117,7 @@ const Login = () => {
 
 	return isAuthenticated == true ? (
 		<Navigate to='/auth/admin' />
-	) : (
+	) : isAuthenticated == false && loading == false ? (
 		<Box width='100%' className='sign-up'>
 			<Wrap width={["90%", "80%", "50%", "40%"]} className='wrap' my={4}>
 				<FormShow
@@ -130,13 +130,17 @@ const Login = () => {
 					}}
 				/>
 				<Text as='p' fontFamily='nun' textAlign='center'>
-					Dont have an account?{" "}
+					Are you an Admin?{" "}
 					<Exlink to='/' sx={{ color: "#f62b45" }}>
 						contact admin
 					</Exlink>
 				</Text>
 			</Wrap>
 		</Box>
+	) : (
+		<WrapLoader>
+			<Loader loading={loading} size={35} color='#f62b45' />
+		</WrapLoader>
 	);
 };
 
