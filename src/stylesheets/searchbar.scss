@@ -1,0 +1,66 @@
+@import "./colors";
+@mixin default {
+	.search {
+		display: flex;
+		border-radius: 50px;
+		justify-content: space-between;
+		align-items: center;
+		background: #dfdfdf;
+		transition: all 0.5s;
+		.bar {
+			transition: all 0.5s;
+			input {
+				width: 85%;
+				margin: 0 auto;
+				font-family: nun;
+				font-weight: 500;
+				color: #000a;
+				border-top-left-radius: inherit;
+				border-bottom-left-radius: inherit;
+				background: transparent;
+				border: none;
+				outline: none;
+				transition: all 0.5s;
+				&:focus {
+					outline: none;
+				}
+			}
+		}
+		.icon {
+			background: $subTone;
+			width: 55px;
+			height: 40px;
+			border-radius: 50%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: #fffd;
+			transition: background 0.4s, color 0.4s;
+			&:hover {
+				background: $bg;
+				color: $primary;
+			}
+		}
+	}
+}
+
+@mixin md {
+	@include default;
+}
+@mixin lg {
+	@include default;
+}
+@media screen and (min-width: 64em) {
+	@include lg;
+}
+@media screen and (max-width: 64em) {
+	@include lg;
+}
+@keyframes a1 {
+	0% {
+		width: 0%;
+	}
+	100% {
+		width: 100%;
+	}
+}

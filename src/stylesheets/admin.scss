@@ -1,0 +1,9 @@
+@mixin basic {
+}
+@media screen and (min-width: 64em) {
+	@include basic;
+}
+
+@media screen and (max-width: 64em) {
+	@include basic;
+}

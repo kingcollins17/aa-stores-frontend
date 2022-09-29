@@ -1,0 +1,64 @@
+@import "./colors";
+@mixin icon-wrap {
+	width: 4.5em;
+	padding: 5px 0;
+	border: 1px solid #a1a1a1;
+	border-radius: 3px;
+}
+@mixin flex-h {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+@mixin nav {
+	.nav {
+		display: flex;
+		position: sticky;
+		box-shadow: 0 0 4px #949494;
+	}
+}
+@mixin link {
+	a {
+		color: #0009;
+		&:hover {
+			color: $subTone;
+		}
+	}
+}
+@mixin lg {
+	@include nav;
+	.nav {
+		.wrap {
+			@include flex-h;
+			& > p {
+				color: $primary;
+			}
+			.bar {
+				width: 60%;
+				display: flex;
+				@include link;
+			}
+		}
+	}
+}
+@mixin md {
+	@include nav;
+	.nav {
+		.wrap {
+			@include flex-h;
+			& > p {
+				color: $primary;
+			}
+			.nav-icon {
+				@include icon-wrap;
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 768px) {
+	@include lg;
+}
+@media screen and (max-width: 768px) {
+	@include md;
+}

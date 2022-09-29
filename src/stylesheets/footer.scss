@@ -1,0 +1,29 @@
+@mixin basic {
+	.footer {
+		display: block;
+		position: absolute;
+		top: 100%;
+		.wrap {
+			display: flex;
+			justify-content: space-between;
+			p {
+				color: aliceblue;
+			}
+			.icx {
+				display: flex;
+				justify-content: flex-end;
+				color: aliceblue;
+				svg {
+					width: auto;
+					margin: 0.4em;
+				}
+			}
+		}
+	}
+}
+@media screen and (min-width: 64em) {
+	@include basic;
+}
+@media screen and (max-width: 64em) {
+	@include basic;
+}

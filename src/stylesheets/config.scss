@@ -1,0 +1,21 @@
+@import "animate.css";
+@import "./vars.scss";
+
+* {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+body {
+	width: 100%;
+	min-height: 100vh;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	a,
+	p {
+		text-decoration: none;
+		color: #181818;
+		font-family: heebo;
+	}
+}

@@ -1,0 +1,60 @@
+@import './colors';
+@mixin default {
+	.loader {
+		position: absolute;
+		width: auto;
+		top: 30%;
+		left: 50%;
+		transform: translateX(-50%);
+
+		.spinner {
+			color: $primary;
+		}
+	}
+	.list {
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
+	}
+	.blog-detail {
+		.desc {
+			display: flex;
+			width: auto;
+			.author {
+				width: 100px;
+				text-align: left;
+				color: #0008;
+			}
+			.icon-actions {
+				display: flex;
+				button {
+					display: flex;
+					background: transparent;
+					width: auto;
+					svg {
+						&:hover {
+							color: $primary;
+						}
+					}
+				}
+			}
+		}
+		.content {
+			p {
+				color: #000b;
+			}
+		}
+	}
+}
+@mixin lg {
+	@include default;
+}
+@mixin md {
+	@include default;
+}
+@media screen and (min-width: 64em) {
+	@include lg;
+}
+@media screen and (max-width: 64em) {
+	@include md;
+}

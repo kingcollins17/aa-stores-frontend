@@ -1,0 +1,13 @@
+@mixin blogcard {
+	#card {
+		box-shadow: 0 0 2px 0 #a1a1a1;
+	}
+}
+
+@media screen and (min-width: 64em) {
+	@include blogcard;
+}
+
+@media screen and (max-width: 64em) {
+	@include blogcard;
+}

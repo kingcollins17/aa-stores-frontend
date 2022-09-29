@@ -1,0 +1,54 @@
+@import "./colors";
+$host: "http://localhost/images/";
+@mixin bground {
+	.landing {
+		background: linear-gradient(60deg, #0003, #000a), url($host + "logo.jpg");
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+		height: 60vh;
+		padding: 10px 0;
+		.content {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			min-height: 80%;
+			gap: 2em;
+			.wrap-icons {
+				display: flex;
+				align-items: center;
+				a {
+					text-decoration: none;
+					padding: 0;
+					margin: 0;
+					color: #fff;
+				}
+			}
+			.welcome {
+				flex: 2;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				width: 100%;
+				.brand {
+					font-family: hbold;
+					color: $subTone;
+				}
+			}
+		}
+	}
+}
+@mixin lg {
+	@include bground;
+}
+
+@mixin md {
+	@include bground;
+}
+
+@media screen and (min-width: 768px) {
+	@include lg;
+}
+@media screen and (max-width: 768px) {
+	@include md;
+}

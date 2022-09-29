@@ -1,0 +1,55 @@
+@mixin lg {
+	.mobile {
+		display: none;
+	}
+}
+@mixin md {
+	.mobile {
+		background: #fff;
+		z-index: 2;
+		width: 100%;
+		position: absolute;
+		top: 3.8em;
+		left: 0;
+		box-shadow: 0 0 3px #a8a8a8;
+		animation: fadeIn 0.5ss linear;
+		transition: all 0.7s;
+		.wrap {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: center;
+			gap: 0;
+			.nav-item {
+				display: flex;
+				flex-direction: row;
+				justify-content: flex-start;
+				align-items: center;
+				width: 90%;
+				gap: 0.3em;
+				margin-left: 5px;
+				border-bottom: 1px solid #e7e7e7;
+				padding: 1em 0;
+				color: #000b;
+				a {
+					width: auto;
+					font-family: heebo;
+					color: #000a;
+				}
+				svg {
+					display: block;
+					width: auto;
+				}
+			}
+		}
+	}
+}
+@mixin sm {
+}
+@media screen and (min-width: 768px) {
+	@include lg;
+}
+
+@media screen and (max-width: 64em) {
+	@include md;
+}

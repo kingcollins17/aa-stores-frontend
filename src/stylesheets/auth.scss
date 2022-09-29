@@ -1,0 +1,45 @@
+@mixin input {
+	label {
+		color: #000b;
+	}
+	input {
+		border: 1px solid #0004;
+		border-radius: 5px;
+		color: #0009;
+		font-family: nun;
+	}
+}
+@mixin basic {
+	.sign-up {
+		animation: zoomIn 0.2s linear;
+		.wrap {
+			padding: 2em 0;
+			box-shadow: 0 0 3px #969696;
+		}
+	}
+	.auth-form {
+		width: 90%;
+		.username {
+			@include input;
+		}
+		.email {
+			@include input;
+		}
+		.password {
+			@include input;
+		}
+	}
+}
+
+@mixin lg {
+	@include basic;
+}
+@mixin md {
+	@include basic;
+}
+@media screen and (min-width: 64em) {
+	@include lg;
+}
+@media screen and (max-width: 64em) {
+	@include md;
+}

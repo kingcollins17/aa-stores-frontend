@@ -1,0 +1,32 @@
+@mixin basic {
+	.create-form {
+		animation: zoomInUp 0.8s linear;
+		.box {
+			input,
+			textarea {
+				border: 1px solid #0003;
+				border-radius: 5px;
+				margin: 0.3em 0;
+				font-family: nun;
+				color: #000c;
+			}
+			textarea {
+				min-height: 250px;
+			}
+		}
+	}
+}
+@mixin lg {
+	@include basic;
+}
+@mixin md {
+	@include basic;
+}
+
+@media screen and (min-width: 64em) {
+	@include lg;
+}
+
+@media screen and (max-width: 64em) {
+	@include md;
+}

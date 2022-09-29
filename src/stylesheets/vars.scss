@@ -1,0 +1,40 @@
+$domain: "http://localhost/fonts/";
+@font-face {
+	font-family: heebo;
+	src: url($domain + "Heebo.ttf");
+}
+@font-face {
+	font-family: rubik;
+	src: url($domain + "Rubik.ttf");
+}
+
+@font-face {
+	font-family: nun;
+	src: url($domain + "Nunito.ttf");
+}
+@font-face {
+	font-family: hbold;
+	src: url($domain + "Heebo-Bold.ttf");
+}
+@font-face {
+	font-family: rbold;
+	src: url($domain + "Rubik-Bold.ttf");
+}
+@font-face {
+	font-family: source;
+	src: url($domain + "/SourceSansPro-Regular");
+}
+@font-face {
+	font-family: sbold;
+	src: url($domain + "SourceSansPro-Bold");
+}
+
+@font-face {
+	font-family: rob;
+	src: url($domain + "Roboto-Regular.ttf");
+}
+
+@font-face {
+	font-family: noto;
+	src: url($domain + "NotoSans-Regular.ttf");
+}
